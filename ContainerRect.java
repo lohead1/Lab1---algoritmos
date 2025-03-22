@@ -4,8 +4,6 @@ public class ContainerRect {
     private double[] distancias;
     private double[] areas;
     private int n; // cantidad maxima de rectangulos
-    @SuppressWarnings("unused")
-    private int ind; //varibale de instancia para manejar los indices
 
     //Atributo de clase
     private static int numRec = 0;
@@ -13,13 +11,12 @@ public class ContainerRect {
     //Constructor
     public ContainerRect(int n){
         this.n = n;
-        this.ind = 0;
         this.arrRect = new Rectangulo[n];
         this.distancias = new double[n];
         this.areas = new double[n];
     }
 
-    //-----------
+    //-----------Metodo estatico para acceder a la cantidad de Rectangulos
     public static int getNumRec(){return ContainerRect.numRec;}
 
     //Metodo de instancia
@@ -35,20 +32,6 @@ public class ContainerRect {
         }else{
             System.out.println("Capacidad maxima alcanzada");
         }
-
-        /* 
-        if(this.ind < this.n){
-            
-            this.arrRect[this.ind] = rect;
-            this.distancias[this.ind] = rect.getEsquina1().distancia(rect.getEsquina2());
-            this.areas[this.ind] = rect.calcularArea();
-            ContainerRect.numRec++;
-            this.ind++;
-
-        }else{
-            System.out.println("Capacidad maxima alcanzada");
-        }
-        */
     }
 
     //Sobreescritura
@@ -63,15 +46,6 @@ public class ContainerRect {
                 .append(String.format("%.3f", this.distancias[i])).append("\t")
                 .append(String.format("%.2f", this.areas[i])).append("\n"); 
         }
-
-        /*
-        for (int i = 0; i < this.ind; i++) {
-            sb.append((i + 1)).append("\t") // Índice del rectángulo
-                .append(this.arrRect[i].toString()).append("\t") // Coordenadas
-                .append(String.format("%.3f", this.distancias[i])).append("\t")
-                .append(String.format("%.2f", this.areas[i])).append("\n"); 
-        }
-        */
 
         return sb.toString();
     }
