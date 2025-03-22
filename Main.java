@@ -3,13 +3,13 @@ import java.util.Scanner;
 //Clase Principal
 public class Main {
     public static void main(String[] args){
-        
+
+        //Scanner: Objeto encargado del ingreso de datos
         Scanner sc = new Scanner(System.in);
 
         //---------------------------Ejercicio
         //Creacion del contenedor de Rectangulos con capacidad n
         ContainerRect cr = new ContainerRect(4);
-
 
         //-------------------Actividad
         //Declaracion de los obj Rectangulo
@@ -51,7 +51,11 @@ public class Main {
 
         //-------------------------Veridicacion de Caso
         if(Verificador.esSobrePos(rect1, rect2)){
-            
+
+            /* Muestra los rectangulos creados ademas de mostrar el 
+            area de la sobreposicion como las coordenadas(Puntos) que conforman
+            este nuevo rectangulo
+            */
             System.out.println("Rectangulo " + letra1 + " y " + letra2 + " se sobreponen.");
             printRect(rect1, letra1);
             printRect(rect2, letra2);
@@ -59,13 +63,15 @@ public class Main {
             System.out.println("\nRectángulo formado por la sobreposición: " + rectanguloSobre(rect1,rect2));    
         
         }else if(Verificador.esJunto(rect1, rect2)){
-            
+
+            //Muestra los puntos que conforman los dos rectangulos creados
             System.out.println("Rectangulo " + letra1 + " y " + letra2 + " se juntan.");
             printRect(rect1, letra1);
             printRect(rect2, letra2);
         
         }else{
 
+            //Muestra los puntos que conforman los dos rectangulos creados
             System.out.println("Rectangulo " + letra1 + " y " + letra2 + " son disjuntos.");
             printRect(rect1, letra1);
             printRect(rect2, letra2);
@@ -82,6 +88,10 @@ public class Main {
 
     //Metodo encargado de imprimir un OBJ de tipo rectangulo
     public static void printRect(Rectangulo rect, char letra){
+        /*
+        Recibe un Objeto rectangulo como tambien un Caracter que 
+        va a representarlo
+        */
         System.out.println("Rectangulo " + Character.toString(letra) + ": " + rect);
     }
 
@@ -100,7 +110,8 @@ public class Main {
                             Math.min(r2.getEsquina1().getY(), r2.getEsquina2().getY()));
         double yMax = Math.min(Math.max(r1.getEsquina1().getY(), r1.getEsquina2().getY()),
                             Math.max(r2.getEsquina1().getY(), r2.getEsquina2().getY()));
-    
+        
+        //-------------------
         return new Rectangulo(new Coordenada(xMin, yMin), new Coordenada(xMax, yMax));
     }
 
